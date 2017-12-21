@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Welcome to our online book store</title>
+</head>
+<body>
+<p><b>Book Detail:</b></p><br>
+<p><b>Title:</b> {{book.title}}<p>
+<p><b>Author:</b> {{book.author}}<p>
+<p><b>Subject:</b> {{book.subject}}<p>
+<p><b>Publisher:</b> {{book.publisher}},{{book.year}}<p>
+<p><b>Copy:</b> {{book.copy}}<p>
+<p><b>Rate:</b> {{book.avgrate}}<p>
+<p><b>Introduntion:</b> {{book.intro}}<p>
+
+<form name="order" action="{{book.id}}/order" method="push">
+</select>
+copy: <select name="copy">
+{% for i in copylist%}
+    <option value={{i}}>{{i}}</option>
+{% endfor %}
+</select>
+<input type="submit" value="Order">
+</form> 
+
+<p><b>Feedbacks:</b><a href="/book/{{book.id}}/topfeedback/5">view top5</a> <a href="/book/{{book.id}}/topfeedback/10">view top10</a></p>
+
+<table border="1">
+
+<tr>
+
+<th>User</th>
+<th>Feedbacks</th>
+<th>Rate</th><th>UsefulnessRate</th>
+</tr>
+
+{% for feedback in feedbacklist%}
+    <tr>
+
+    <td>{{feedback.user.username}}</td><td>{{feedback.text}}</td><td>{{feedback.rate}}</td>
+<td>{{feedback.avgrate}}</td>
+    <td>
+    <form name="feedbackrate" action="{{feedback.id}}/feedbackrate" method="push">
+    usefulness rate: <select name="rate">
+    <option value=0>0(less useful)</option>
+    <option value=1>1(useful)</option>
+    <option value=2>2(very useful)</option>
+    </select>
+    <input type="submit" value="rate">
+    </form>
+    <td> 
+    </tr>
+{% endfor %}
+
+
+</table>
+<br>
+
+<form name="feedback" action="{{book.id}}/feedback" method="push">
+Write your own feedback here: <br><textarea rows="10" cols="50" name="feedback">
+</textarea><br>
+</select>
+rate: <select name="rate">
+{% for i in ratelist%}
+    <option value={{i}}>{{i}}</option>
+{% endfor %}
+</select>
+<input type="submit" value="Submit">
+</form> 
+
+</body>
+</html>

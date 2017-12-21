@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Welcome to our online book store</title>
+</head>
+<body>
+<p><b>Add New Copy</b></p><br>
+<form name="newcopy" action="trynewcopy" method="push">
+Book: <select name="id">
+{% for i in booklist%}
+    <option value={{i.id}}>{{i.title}}</option>
+{% endfor %}
+</select>
+copy: <select name="copy">
+{% for i in copylist%}
+    <option value={{i}}>{{i}}</option>
+{% endfor %}
+</select>
+<input type="submit" value="Submit">
+</form> 
+</body>
+</html>

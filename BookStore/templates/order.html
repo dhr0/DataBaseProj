@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Welcome to our online book store</title>
+</head>
+<body>
+<p><b>Order Completed</b></p>
+<p><b>You may also like:</b></p>
+
+<table border="1">
+
+<tr>
+
+<th>Title</th>
+<th>Author</th>
+<th>Rate</th>
+</tr>
+
+{% for book in booklist%}
+    <tr>
+
+    <td>{{book.title}}</td><td>{{book.author}}</td><td>{{book.avgrate}}</td>
+    </tr>
+{% endfor %}
+
+
+</table>
+<a href="/user">back to user page</a> 
+<br>
+
+</body>
+</html>

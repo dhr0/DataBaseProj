@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Welcome to our online book store</title>
+</head>
+<body>
+
+<p><b>Searching Result:</b></p>
+
+<form name="browsing" action="browsing" method="get">
+
+Keyword: <input type="text" name="keyword">
+Sort By: <select name="sort">
+<option value=year>year</option>
+<option value=avgrate>rate</option>
+</select>
+<input type="submit" value="Search">
+</form> 
+
+<table border="1">
+
+<tr>
+
+<th>Title</th>
+<th>Author</th>
+<th>Publisher</th><th>Year</th><th>Subject</th><th>Average Rate</th>
+
+</tr>
+{% for book in booklist%}
+    <tr>
+
+    <td><a href="/book?id={{book.id}}">{{book.title}}</a></td>
+<td>{{book.author}}</td>
+<td>{{book.publisher}}</td>
+
+<td>{{book.year}}</td>
+<td>{{book.subject}}</td>
+
+<td>{{book.avgrate}}</td>
+    </tr>
+{% endfor %}
+
+
+</table>
+
+</body>
+</html>

@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Welcome to our online book store</title>
+</head>
+<body>
+
+<p><b>Welcome Back!</b>  {{c_user.username}}</p>
+
+{% if c_user.is_superuser %}
+    <p><a href="/user/admin">Go to admin page</a></p>
+{% endif %}
+
+<form name="browsing" action="browsing" method="get">
+
+Keyword: <input type="text" name="keyword">
+Sort By: <select name="sort">
+<option value=year>year</option>
+<option value=avgrate>rate</option>
+</select>
+<input type="submit" value="Search">
+</form> 
+
+<p>{{c_user.username}}'s<b>Order History</b></p>
+<table border="1">
+
+<tr>
+
+<th>Title</th>
+<th>Copy</th>
+<th>Date</th>
+</tr>
+
+{% for order in orderlist%}
+    <tr>
+
+    <td><a href="/book?id={{order.book.id}}">{{order.book.title}}</a></td>
+<td>{{order.copy}}</td>
+<td>{{order.date}}</td>
+
+<td></td>
+    </tr>
+{% endfor %}
+</table>
+
+<p>{{c_user.username}}'s<b>Feedback History</b></p>
+<table border="1">
+
+<tr>
+
+<th>Title</th>
+<th>My Feedback</th>
+
+<th>My Rate</th><th>Date</th>
+</tr>
+
+{% for feedback in feedbacklist%}
+    <tr>
+
+    <td><a href="/book?id={{feedback.book.id}}">{{feedback.book.title}}</a></td>
+<td>{{feedback.text}}</td><td>{{feedback.rate}}</td>
+<td>{{feedback.date}}</td>
+
+<td></td>
+    </tr>
+{% endfor %}
+</table>
+
+<p>{{c_user.username}}'s<b>Usefulness Rating History</b></p>
+<table border="1">
+
+<tr>
+
+</th>Title<th><th>User</th>
+<th>Feedback</th>
+
+<th>Rate</th>
+
+<th>My Usefulness Rate</th>
+</tr>
+
+{% for feedbackrate in feedbackratelist%}
+    <tr>
+
+    <td><a href="/book?id={{feedbackrate.feedback.book.id}}">{{feedbackrate.feedback.book.title}}</a></td><td>{{feedbackrate.feedback.user.username}}</td>
+<td>{{feedbackrate.feedback.text}}</td><td>{{feedbackrate.feedback.rate}}</td>
+<td>{{feedbackrate.rate}}</td>
+
+<td></td>
+    </tr>
+{% endfor %}
+</table>
+
+</body>
+</html>

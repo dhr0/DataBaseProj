@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Welcome to our online book store</title>
+</head>
+<body>
+<p><b>Add New Book</b></p><br>
+<form name="newbook" action="trynewbook" method="get">
+
+Title: <input type="text" name="title"><br>
+
+Author: <input type="text" name="author">
+<br>
+Publisher: <input type="text" name="publisher">
+Year: <select name="year">
+{% for i in yearlist%}
+    <option value={{i}}>{{i}}</option>
+{% endfor %}
+</select><br>
+Subject: <input type="text" name="subject">
+<br>
+Introduction: <br><textarea rows="10" cols="50" name="intro">
+</textarea><br>
+<input type="submit" value="Submit">
+</form> 
+</body>
+</html>
